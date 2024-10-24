@@ -16,3 +16,24 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 }
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.gap-16 {
+    gap: 1rem;
+}
+
+.gap-32 {
+    gap: 2rem;
+}

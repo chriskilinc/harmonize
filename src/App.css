@@ -50,6 +50,7 @@ main {
     justify-content: center;
     list-style: none;
     margin-top: 40px;
+    padding: 0;
 }
 
 .piano-keys .key {
