@@ -1,6 +1,6 @@
-import { Chord, Interval, Note, Scale, Mode, Midi } from "tonal";
+import { Note, Scale } from "tonal";
 import { useSearchParams } from 'react-router-dom';
-import { chromaticScale, getArrangedChromaticScaleByKey } from '../utils/util';
+import { chromaticScale } from '../utils/util';
 import { useDataContext } from '../contexts/DataContext';
 
 //  https://github.com/tonaljs/tonal/tree/main/packages/midi
