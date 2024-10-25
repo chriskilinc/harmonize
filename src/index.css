@@ -1,18 +1,46 @@
-html, body, #root {
+:root {
+    --color-dark-1: #030103;
+    --color-purple-1: #522258;
+    --color-red-1: #8C3061;
+    --color-red-2: #C63C51;
+    --color-red-3: #D95F59;
+    --color-red-4: #e79b97;
+    --color-white-1: #fbf3fb;
+
+    --piano-color-primary: #f5f5f5;
+    --piano-color-secondary: #373737;
+    --piano-color-active: #e7c8c8;
+    --piano-color-active: var(--color-red-4);
+    --piano-color-isKey: #c47575;
+    --piano-color-isKey: var(--color-red-3);
+}
+
+html,
+body,
+#root {
     height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 body {
-    background: #000;
+    background: var(--color-dark-1);
     color: #fff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 }
@@ -36,4 +64,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .gap-32 {
     gap: 2rem;
+}
+
+.p-16 {
+    padding: 1rem;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
 }
