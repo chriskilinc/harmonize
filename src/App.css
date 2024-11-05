@@ -2,6 +2,10 @@ main {
     padding: 2rem;
     justify-content: center;
     max-width: -webkit-fill-available;
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+    }
 }
 
 .scale-name {
@@ -11,4 +15,6 @@ main {
     align-items: center;
     flex-direction: row;
     font-size: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }

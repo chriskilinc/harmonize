@@ -29,13 +29,17 @@ export const InitialSection = () => {
                 <DropdownSelect options={chromaticScale} defaultValue={note.pc} onChange={onKeyChange} />
                 <DropdownSelect options={Scale.names()} defaultValue={mode} onChange={onModeChange} />
             </div>
-            {!scale?.empty && (
-                <p className='scale-name'>
-                    {scale.name}
-                    {scale.aliases.length > 0 && <span style={{ fontStyle: "italic", fontSize: "0.75rem" }}> ({scale.aliases.join(", ")})</span>}
-                    <CopyButton size={"1rem"} text={location.href} />
-                </p>
-            )}
+            <p className='scale-name'>
+                {scale?.empty ?
+                    <>
+                        Something went wrong..
+                    </> : <>
+                        {scale.name}
+                        {scale.aliases.length > 0 && <span style={{ fontStyle: "italic", fontSize: "0.75rem" }}> ({scale.aliases.join(", ")})</span>}
+                        <CopyButton size={"1rem"} text={location.href} />
+                    </>}
+
+            </p>
 
         </section>
     )
