@@ -1,6 +1,7 @@
 import { Note } from 'tonal';
 import { useDataContext } from '../../contexts/DataContext';
 import { getArrangedChromaticScaleByKey } from '../../utils/util';
+import './piano.css';
 
 export const Piano = () => {
 
@@ -15,7 +16,6 @@ export const Piano = () => {
                 const pianoKey = isBlack ? "black" : "white";
                 const isKey = (note == scaleNotes[0]);
                 const classes = `key ${pianoKey} ${note}`;
-                // const notes = note.split("/");  // Only aplicable for black notes, ex: C#/Db
                 return <li key={reactKey} data-note={note} data-active={active.toString()} data-iskey={isKey.toString()} className={classes}><span>{note}</span></li>
             })}
         </ul>

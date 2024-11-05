@@ -12,6 +12,7 @@ select {
     border: 0;
     outline: 0;
     font: inherit;
+    text-transform: capitalize;
     padding: 1rem 4rem 1rem 1rem;
     background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
         /* linear-gradient(to bottom, #242424 96%, #eee 20%); */

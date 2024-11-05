@@ -1,11 +1,12 @@
 :root {
+    --color-white-1: #fbf3fb;
     --color-dark-1: #030103;
     --color-purple-1: #522258;
     --color-red-1: #8C3061;
     --color-red-2: #C63C51;
     --color-red-3: #D95F59;
     --color-red-4: #e79b97;
-    --color-white-1: #fbf3fb;
+    --color-green-4: #97e79b;
 
     --piano-color-primary: #f5f5f5;
     --piano-color-secondary: #373737;
@@ -30,7 +31,7 @@ body,
 
 body {
     background: var(--color-dark-1);
-    color: #fff;
+    color: var(--color-white-1);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
 }
@@ -43,6 +44,14 @@ h5,
 h6 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.p-16 {
+    padding: 1rem;
 }
 
 .flex {
@@ -58,6 +67,24 @@ h6 {
     justify-content: center;
 }
 
+.flex-start {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+
+.gap-4 {
+    gap: 0.25rem;
+}
+
+.gap-8 {
+    gap: 0.5rem;
+}
+
 .gap-16 {
     gap: 1rem;
 }
@@ -66,10 +93,38 @@ h6 {
     gap: 2rem;
 }
 
-.p-16 {
-    padding: 1rem;
-}
+@media (min-width: 768px) {
 
-.flex-wrap {
-    flex-wrap: wrap;
+    .md-justify-center {
+        justify-content: center;
+    }
+
+    .md-justify-start {
+        justify-content: flex-start;
+    }
+
+    .md-align-center {
+        align-items: center;
+    }
+
+    .md-flex-center {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .md-gap-4 {
+        gap: 0.25rem;
+    }
+
+    .md-gap-8 {
+        gap: 0.5rem;
+    }
+
+    .md-gap-16 {
+        gap: 1rem;
+    }
+
+    .md-gap-32 {
+        gap: 2rem;
+    }
 }
