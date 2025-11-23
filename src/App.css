@@ -1,20 +1,20 @@
 main {
-    padding: 2rem;
-    justify-content: center;
-    max-width: -webkit-fill-available;
+  padding: 2rem;
+  justify-content: center;
+  max-width: -webkit-fill-available;
 
-    @media screen and (max-width: 768px) {
-        padding: 1rem;
-    }
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
 }
 
 .scale-name {
-    text-transform: capitalize;
-    display: inline-flex;
-    white-space: pre;
-    align-items: center;
-    flex-direction: row;
-    font-size: 1.25rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  text-transform: capitalize;
+  display: inline-flex;
+  white-space: pre;
+  align-items: center;
+  flex-direction: row;
+  font-size: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }

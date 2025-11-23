@@ -1,31 +1,43 @@
-import './App.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { InitialSection } from './pages/Initial';
-import { ErrorPage } from './pages/404';
-import { Test } from './pages/Test';
-import { DataProvider } from './contexts/DataContext';
+import "./App.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { InitialSection } from "./pages/Initial";
+import { ErrorPage } from "./pages/404";
+import { Test } from "./pages/Test";
+import { DataProvider } from "./contexts/DataContext";
+import { SynthProvider } from './contexts/SynthContext';
+import { FeatureProvider } from './contexts/FeatureContext';
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <DataProvider><InitialSection /></DataProvider>,
+      element: (
+        <DataProvider>
+          <SynthProvider>
+            <InitialSection />
+          </SynthProvider>
+        </DataProvider>
+      ),
       errorElement: <ErrorPage />,
     },
     {
       path: "/test",
-      element: <DataProvider><Test /></DataProvider>,
+      element: (
+        <DataProvider>
+          <Test />
+        </DataProvider>
+      ),
       errorElement: <ErrorPage />,
-    }
+    },
   ]);
 
   return (
-
     <main>
-      <RouterProvider router={router} />
+      <FeatureProvider>
+        <RouterProvider router={router} />
+      </FeatureProvider>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
