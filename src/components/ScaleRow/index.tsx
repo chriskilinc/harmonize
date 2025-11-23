@@ -10,7 +10,7 @@ export const ScaleRow: React.FC<ScaleRowProps> = ({}) => {
   const { scale } = useDataContext();
 
   return (
-    <div className="scale-row flex gap-16">
+    <div className="scale-row">
       {scale?.notes?.map((note, i) => {
         const interval = scale.intervals[i];
         return (

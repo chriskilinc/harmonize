@@ -22,9 +22,6 @@ interface IDataContext {
   changeKey: (key: string) => void;
   changeMode: (mode: string) => void;
   getNoteObject: (note: string) => PitchNote;
-  // synth controls
-  volume: number;
-  setVolume: (volume: number) => void;
 }
 
 interface DataProviderProps {
@@ -84,10 +81,6 @@ export const DataProvider = ({ children }: DataProviderProps) => {
     });
   };
 
-  // SYNTH CONTROLS - TODO MOVE
-  const [volume, setVolume] = useState(-12); // -12dB'
-  console.log("volume", volume);
-
   return (
     <DataContext.Provider
       value={{
@@ -104,9 +97,6 @@ export const DataProvider = ({ children }: DataProviderProps) => {
         changeKey,
         changeMode,
         getNoteObject,
-        // synth controls
-        volume,
-        setVolume,
       }}
     >
       {children}

@@ -4,6 +4,8 @@ import { InitialSection } from "./pages/Initial";
 import { ErrorPage } from "./pages/404";
 import { Test } from "./pages/Test";
 import { DataProvider } from "./contexts/DataContext";
+import { SynthProvider } from './contexts/SynthContext';
+import { FeatureProvider } from './contexts/FeatureContext';
 
 function App() {
   const router = createBrowserRouter([
@@ -11,7 +13,9 @@ function App() {
       path: "/",
       element: (
         <DataProvider>
-          <InitialSection />
+          <SynthProvider>
+            <InitialSection />
+          </SynthProvider>
         </DataProvider>
       ),
       errorElement: <ErrorPage />,
@@ -29,7 +33,9 @@ function App() {
 
   return (
     <main>
-      <RouterProvider router={router} />
+      <FeatureProvider>
+        <RouterProvider router={router} />
+      </FeatureProvider>
     </main>
   );
 }
