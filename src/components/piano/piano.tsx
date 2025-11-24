@@ -13,11 +13,11 @@ interface PianoKey {
   midi?: number;
 }
 
-export const Piano = () => {
-  const { note, scaleNotes, getNoteObject } = useDataContext();
+export const Piano = ({ selectedNotes, rootNote }: { selectedNotes: string[], rootNote: any }) => {
+  const { getNoteObject } = useDataContext();
   const { synth: isSynthEnabled } = useFeatureContext();
   const { volume } = useSynthContext();
-  const arrangedNotes = getArrangedChromaticScaleByKey(note.pc);
+  const arrangedNotes = getArrangedChromaticScaleByKey(rootNote.pc);
 
   // Create a persistent PolySynth with Reverb
   const synthRef = React.useRef<Tone.PolySynth | null>(null);
@@ -92,20 +92,20 @@ export const Piano = () => {
 
   return (
     <ul className="piano-keys">
-      {arrangedNotes.map((note, i, arr) => {
-        const noteObj = getNoteObject(note);
-        const reactKey = `${note}-${i}`;
+      {arrangedNotes.map((n, i, arr) => {
+        const noteObj = getNoteObject(n);
+        const reactKey = `${n}-${i}`;
         const active =
-          scaleNotes.includes(note) ||
-          scaleNotes.includes(Note.enharmonic(note));
-        const isBlack = note.includes("#") || note.includes("b");
+          selectedNotes.includes(n) ||
+          selectedNotes.includes(Note.enharmonic(n));
+        const isBlack = n.includes("#") || n.includes("b");
         const pianoKey = isBlack ? "black" : "white";
-        const isKey = note == scaleNotes[0];
-        const classes = `key ${pianoKey} ${note}`;
+        const isKey = n == selectedNotes[0];
+        const classes = `key ${pianoKey} ${n}`;
         return (
           <li
             key={reactKey}
-            data-note={note}
+            data-note={n}
             data-active={active.toString()}
             data-iskey={isKey.toString()}
             data-midi={noteObj.midi}
@@ -113,7 +113,7 @@ export const Piano = () => {
             className={classes}
             onClick={onClick}
           >
-            <span>{note}</span>
+            <span>{n}</span>
           </li>
         );
       })}

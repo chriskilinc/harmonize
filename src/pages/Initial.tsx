@@ -12,6 +12,7 @@ export const InitialSection = () => {
   const {
     note,
     scale,
+    scaleNotes,
     mode,
     changeKey,
     changeMode,
@@ -34,7 +35,7 @@ export const InitialSection = () => {
       <section className="container flex flex-column flex-center gap-32">
         {!scale?.empty && <ScaleRow scale={scale} />}
 
-        <Piano />
+        <Piano selectedNotes={scaleNotes} rootNote={note} />
 
         <div className="flex gap-8 md-gap-16 flex-wrap flex-center">
           <DropdownSelect
