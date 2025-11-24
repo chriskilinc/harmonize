@@ -1,0 +1,39 @@
+.note-button {
+  background-color: transparent;
+  border: 2px solid var(--color-white-1);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: var(--color-white-1);
+  border-radius: 4px;
+  color: var(--color-dark-1);
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.1s ease-in;
+
+  &.selected {
+    background-color: var(--piano-color-isKey);
+    border-color: var(--color-white-2);
+    color: var(--color-dark-1);
+  }
+}
+
+.note-button:hover {
+  color: var(--color-white-1);
+  background-color: var(--color-dark-2);
+  border-color: var(--color-white-1);
+
+  &.selected {
+    background-color: var(--piano-color-active);
+    border-color: var(--color-white-2);
+    color: var(--color-dark-1);
+  }
+}
+
+.note-button:active {
+  color: var(--color-white-1);
+  background-color: var(--color-dark-4);
+  border-color: var(--color-white-2);
+}
