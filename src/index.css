@@ -14,9 +14,9 @@
 
     --piano-color-primary: #f5f5f5;
     --piano-color-secondary: #373737;
-    --piano-color-active: #e7c8c8;
+    /* --piano-color-active: #e7c8c8; */
     --piano-color-active: var(--color-red-4);
-    --piano-color-isKey: #c47575;
+    /* --piano-color-isKey: #c47575; */
     --piano-color-isKey: var(--color-red-3);
 }
 
@@ -30,7 +30,7 @@ body,
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 body {
@@ -40,8 +40,20 @@ body {
     display: flex;
 }
 
+main {
+    padding: 2rem;
+    justify-content: center;
+    max-width: -webkit-fill-available;
+    height: 100%;
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+    }
+}
+
 .container {
-    max-width: 40rem;
+    /* max-width: 40rem; */
+    height: 100%;
 }
 
 h1,
@@ -103,6 +115,11 @@ p {
 
 .gap-32 {
     gap: 2rem;
+}
+
+.width-m-40 {
+    width: 40rem;
+    max-width: 40rem;
 }
 
 @media (min-width: 768px) {

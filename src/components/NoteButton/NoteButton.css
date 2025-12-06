@@ -14,9 +14,14 @@
   transition: all 0.1s ease-in;
 
   &.selected {
-    background-color: var(--piano-color-isKey);
+    background-color: var(--piano-color-active);
     border-color: var(--color-white-2);
     color: var(--color-dark-1);
+
+    &.root {
+      background-color: var(--piano-color-isKey);
+    }
+
   }
 }
 

@@ -41,12 +41,11 @@ export const DataProvider = ({ children }: DataProviderProps) => {
     : "major";
 
   const [octave, setOctave] = useState(4);
-  const [note, setNote] = useState(Note.get(`${keyParamValid}${octave}`)); // ground note
+  const [note, setNote] = useState(Note.get(`${keyParamValid}${octave}`)); // root note
   const [mode, setMode] = useState(modeParamValid);
   const [scale, setScale] = useState(
     Scale.get(`${note.name} ${Scale.get(mode).name}`)
   );
-  console.log("scale", scale);
 
   useEffect(() => {
     setNote(Note.get(`${keyParamValid}${octave}`));

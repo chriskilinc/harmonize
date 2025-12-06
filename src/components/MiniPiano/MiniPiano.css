@@ -1,0 +1,33 @@
+.mini-piano {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  .key {
+    background-color: var(--color-white-1);
+
+    &.white {
+      border-radius: 1rem;
+      width: 0.55rem;
+      height: 3rem;
+    }
+
+    &.black {
+      width: 0.25rem;
+      height: 2rem;
+      z-index: 2;
+      margin: 0 -0.1rem 0 -0.1rem;
+      border: 1px solid var(--color-dark-1);
+      background-color: var(--color-dark-1);
+      border-radius: 0% 0% 1rem 1rem;
+    }
+
+    &[data-active="true"] {
+      background-color: var(--piano-color-active);
+    }
+
+    &[data-isroot="true"] {
+      background-color: var(--piano-color-isKey);
+    }
+  }
+}

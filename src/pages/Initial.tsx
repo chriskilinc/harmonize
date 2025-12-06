@@ -32,7 +32,7 @@ export const InitialSection = () => {
 
   return (
     <>
-      <section className="container flex flex-column flex-center gap-32">
+      <section className="container flex flex-column flex-center gap-32 width-m-40">
         {!scale?.empty && <ScaleRow scale={scale} />}
 
         <Piano selectedNotes={scaleNotes} rootNote={note} />
