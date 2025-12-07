@@ -1,10 +1,10 @@
-import { Note, Scale } from "tonal";
+import { Scale } from "tonal";
 import { useSearchParams } from 'react-router-dom';
 import { chromaticScale } from '../utils/util';
 import { NoteButton } from '../components/NoteButton/NoteButton';
 import { useEffect, useState } from 'react';
 import '../style/scales.css';
-import { MiniPiano } from '../components/MiniPiano/MiniPiano';
+import { ScaleCard } from '../components/ScaleCard/ScaleCard';
 
 // TODO: Replace clear button with an icon button
 
@@ -46,7 +46,6 @@ export const Scales = () => {
     return (
         <section className='container scales-page'>
             <header className='header'>
-
                 <h1>Scales Finder</h1>
                 <p>Find scales based on your selected notes</p>
 
@@ -65,32 +64,12 @@ export const Scales = () => {
                     ))}
 
                 </section>
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-
-                    {/* <MiniPiano selectedNotes={Array.from(selectedNotes)} /> */}
-                </div>
-
             </header>
 
             <section className='scales-results'>
-
-                {/* <h2>Possible Scales:</h2> */}
-                {/* <p>{Array.from(selectedNotes).join(', ') || 'No notes selected.'}</p> */}
                 <div className='scales-container'>
                     {selectedNotes.size > 1 && Scale.detect(Array.from(selectedNotes)).map((scale, index) => {
-                        const scaleSet = new Set(Scale.get(scale).notes.map(n => Note.simplify(n)));
-                        return (
-                            <a href='/' className='scale-card' key={index}>
-                                <div>
-                                    {scale}
-                                </div>
-                                <div>
-                                    {Scale.get(scale).notes.map(n => Note.simplify(n)).join(' ')}
-                                </div>
-                                <MiniPiano selectedNotes={Array.from(scaleSet)} />
-
-                            </a>
-                        );
+                        return <ScaleCard scale={scale} index={index} key={index} />
                     })}
                 </div>
             </section>

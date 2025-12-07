@@ -17,7 +17,7 @@
 
   .scales-results {
     /*TODO: replace with gap higher*/
-    margin-top: 2rem;
+    padding: 1rem 0;
     max-width: 80rem;
   }
 
@@ -25,19 +25,25 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem;
-    max-height: 30rem;
     overflow-y: auto;
   }
 
   .scale-card {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-white-1);
     background-color: var(--color-dark-2);
     border: 1px solid var(--color-dark-3);
     border-radius: 8px;
-    padding: 0.5rem 1rem;
     box-shadow: var(--box-shadow);
+    padding: 1rem;
     flex-grow: 1;
-
-    color: var(--color-white-1);
+    gap: 0.25rem;
     text-decoration: none;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: var(--color-dark-3);
+    }
   }
 }

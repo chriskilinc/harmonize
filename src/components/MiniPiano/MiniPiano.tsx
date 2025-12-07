@@ -1,15 +1,11 @@
 import { getArrangedChromaticScaleByKey } from '../../utils/util';
-import { note, Note } from 'tonal';
+import { Note } from 'tonal';
 import './MiniPiano.css';
 
 export const MiniPiano = ({ selectedNotes }: { selectedNotes: any[] }) => {
   const octave = 4;
   const root = Note.get(selectedNotes[0] + octave);
   const arrangedNotes = getArrangedChromaticScaleByKey(root.pc);
-
-  console.log('Root Note for MiniPiano:', root);
-  console.log('Arranged Notes for MiniPiano:', arrangedNotes);
-  console.log('Selected Notes for MiniPiano:', selectedNotes);
 
   return (
     <div className="mini-piano">
@@ -24,7 +20,6 @@ export const MiniPiano = ({ selectedNotes }: { selectedNotes: any[] }) => {
             data-active={isSelected.toString()}
             data-isroot={(noteObj.pc === root.pc).toString()}
           >
-            {/* {noteObj.name} */}
           </div>
         );
       })}
