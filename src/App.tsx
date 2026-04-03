@@ -1,53 +1,51 @@
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import { InitialSection } from "./pages/Initial";
 import { ErrorPage } from "./pages/404";
 import { Test } from "./pages/Test";
 import { Chords } from "./pages/Chords";
 import { DataProvider } from "./contexts/DataContext";
-import { SynthProvider } from './contexts/SynthContext';
-import { FeatureProvider } from './contexts/FeatureContext';
-import { Scales } from './pages/Scales';
+import { SynthProvider } from "./contexts/SynthContext";
+import { FeatureProvider } from "./contexts/FeatureContext";
+import { Scales } from "./pages/Scales";
+
+function DataLayout() {
+  return (
+    <DataProvider>
+      <Outlet />
+    </DataProvider>
+  );
+}
+
+function DataSynthLayout() {
+  return (
+    <DataProvider>
+      <SynthProvider>
+        <Outlet />
+      </SynthProvider>
+    </DataProvider>
+  );
+}
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: (
-        <DataProvider>
-          <SynthProvider>
-            <InitialSection />
-          </SynthProvider>
-        </DataProvider>
-      ),
+      element: <DataSynthLayout />,
       errorElement: <ErrorPage />,
+      children: [{ index: true, element: <InitialSection /> }],
     },
     {
-      path: "/test",
-      element: (
-        <DataProvider>
-          <Test />
-        </DataProvider>
-      ),
+      element: <DataLayout />,
       errorElement: <ErrorPage />,
-    },
-    {
-      path: "/chords",
-      element: (
-        <DataProvider>
-          <Chords />
-        </DataProvider>
-      ),
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: "/scales",
-      element: (
-        <DataProvider>
-          <Scales />
-        </DataProvider>
-      ),
-      errorElement: <ErrorPage />,
+      children: [
+        { path: "/test", element: <Test /> },
+        { path: "/chords", element: <Chords /> },
+        { path: "/scales", element: <Scales /> },
+      ],
     },
   ]);
 
