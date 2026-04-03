@@ -2,31 +2,37 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  align-items: flex-start;
 
   .key {
-    background-color: var(--color-white-1);
+    background-color: var(--surface-1);
+    transition:
+      background-color var(--theme-transition-duration) var(--theme-transition-easing),
+      box-shadow var(--theme-transition-duration) var(--theme-transition-easing);
 
     &.white {
-      outline: 1px solid var(--color-dark-1);
+      border: 1px solid var(--surface-3);
+      border-radius: 0 0 0.3rem 0.3rem;
       width: 1rem;
       height: 3rem;
     }
 
     &.black {
-      width: 0.33rem;
-      height: 2rem;
+      width: 0.38rem;
+      height: 1.9rem;
       z-index: 2;
       margin: 0 -0.15rem 0 -0.15rem;
-      outline: 1px solid var(--color-dark-1);
-      background-color: var(--color-dark-1);
+      border-radius: 0 0 0.2rem 0.2rem;
+      background-color: var(--color-dark-2);
     }
 
     &[data-active="true"] {
-      background-color: var(--piano-color-active);
+      background: var(--piano-color-active);
     }
 
     &[data-isroot="true"] {
-      background-color: var(--piano-color-isKey);
+      background: var(--piano-color-isKey);
+      box-shadow: 0 4px 10px rgba(207, 95, 60, 0.18);
     }
   }
 }

@@ -40,12 +40,12 @@ export const InitialSection = () => {
         <div className="flex gap-8 md-gap-16 flex-wrap flex-center">
           <DropdownSelect
             options={chromaticScale}
-            defaultValue={note.pc}
+            value={note.pc}
             onChange={onKeyChange}
           />
           <DropdownSelect
             options={Scale.names()}
-            defaultValue={mode}
+            value={mode}
             onChange={onModeChange}
           />
         </div>

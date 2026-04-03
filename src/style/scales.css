@@ -1,49 +1,163 @@
 .scales-page {
   display: flex;
   flex-direction: column;
+  gap: 2.1rem;
 
   header {
     display: flex;
     flex-direction: column;
     max-width: 50rem;
     align-self: center;
+    width: 100%;
+    gap: 1rem;
+    border: 1px solid var(--surface-3);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--surface-1) 94%, transparent),
+      color-mix(in srgb, var(--surface-2) 88%, transparent)
+    );
+    box-shadow: var(--box-shadow);
+    padding: 1.35rem;
+
+    h1 {
+      font-size: clamp(1.75rem, 2.6vw, 2.2rem);
+      color: var(--ink-1);
+    }
   }
 
   .clear-button {
-    margin: 1rem 0;
+    margin: 1rem 0 1.2rem;
     max-width: fit-content;
     align-self: flex-end;
+    border: 1px solid var(--color-dark-4);
+    border-radius: 999px;
+    background: var(--surface-1);
+    color: var(--ink-1);
+    padding: 0.58rem 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition:
+      transform 0.1s ease,
+      border-color var(--theme-transition-duration) var(--theme-transition-easing),
+      background-color var(--theme-transition-duration) var(--theme-transition-easing),
+      color var(--theme-transition-duration) var(--theme-transition-easing);
+
+    &:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent-soft);
+      background: color-mix(in srgb, var(--color-red-3) 10%, var(--surface-1));
+    }
+  }
+
+  .root-hint {
+    font-size: 0.86rem;
+    opacity: 0.9;
+    color: var(--ink-2);
+  }
+
+  .scale-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .meta-pill {
+    border: 1px solid var(--surface-3);
+    border-radius: 999px;
+    background: var(--surface-1);
+    padding: 0.36rem 0.86rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-1);
+    font-weight: 500;
   }
 
   .scales-results {
-    /*TODO: replace with gap higher*/
-    padding: 1rem 0;
+    padding: 0.55rem 0 1.6rem;
     max-width: 80rem;
+    width: 100%;
+    align-self: center;
   }
 
   .scales-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1.2rem;
     overflow-y: auto;
   }
 
   .scale-card {
     display: flex;
     flex-direction: column;
-    color: var(--color-white-1);
-    background-color: var(--color-dark-2);
-    border: 1px solid var(--color-dark-3);
-    border-radius: 8px;
-    box-shadow: var(--box-shadow);
-    padding: 1rem;
-    flex-grow: 1;
-    gap: 0.25rem;
+    color: var(--ink-1);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface-1) 95%, transparent),
+      color-mix(in srgb, var(--surface-2) 90%, transparent)
+    );
+    border: 1px solid var(--surface-3);
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(31, 35, 40, 0.12);
+    padding: 1.35rem;
+    gap: 1rem;
     text-decoration: none;
-    transition: all 0.1s ease-in-out;
+    transition:
+      transform 0.12s ease,
+      border-color var(--theme-transition-duration) var(--theme-transition-easing),
+      background-color var(--theme-transition-duration) var(--theme-transition-easing),
+      color var(--theme-transition-duration) var(--theme-transition-easing),
+      box-shadow var(--theme-transition-duration) var(--theme-transition-easing);
 
     &:hover {
-      background-color: var(--color-dark-3);
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--surface-1) 98%, transparent),
+        color-mix(in srgb, var(--surface-2) 96%, transparent)
+      );
+      border-color: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring-soft);
+      outline-offset: 2px;
+    }
+  }
+
+  .scale-card-title {
+    font-size: 1.2rem;
+    letter-spacing: 0.01em;
+    color: var(--ink-1);
+  }
+
+  .scale-card-notes {
+    font-family: var(--font-mono);
+    color: var(--ink-2);
+    font-size: 0.9rem;
+    background: color-mix(in srgb, var(--surface-1) 90%, transparent);
+    border: 1px solid var(--surface-3);
+    border-radius: 0.5rem;
+    padding: 0.52rem 0.68rem;
+  }
+
+  .results-empty {
+    grid-column: 1 / -1;
+    border: 1px dashed var(--color-dark-4);
+    border-radius: 10px;
+    padding: 1.35rem;
+    color: var(--ink-2);
+    text-align: center;
+    background: color-mix(in srgb, var(--surface-1) 86%, transparent);
+  }
+
+  @media (max-width: 768px) {
+    .scales-container {
+      grid-template-columns: 1fr;
+    }
+
+    header {
+      padding: 1.1rem;
     }
   }
 }

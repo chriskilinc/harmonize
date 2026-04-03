@@ -1,50 +1,10 @@
-
-
-/* .piano.wrapper {
-    padding: 35px 40px;
-    border-radius: 20px;
-    background: var(--color-black);
-    border: 2px solid var(--color-white);
-    width: 100%;
-}
-
-.piano.wrapper header {
-    display: flex;
-    color: #B2B2B2;
-    align-items: center;
-   justify-content: space-between;
-} 
-
-.piano header h2 {
-    font-size: 1.6rem;
-}
-
-.piano header .column {
-    display: flex;
-    align-items: center;
-}
-
-.piano header span {
-    font-weight: 500;
-    margin-right: 15px;
-    font-size: 1.19rem;
-}
-
-.piano header input {
-    outline: none;
-    border-radius: 30px;
-}
-
-.volume-slider input {
-    accent-color: var(--color-white);
-} */
-
 .piano-keys {
     display: flex;
     justify-content: center;
     list-style: none;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 .piano-keys .key {
@@ -52,6 +12,14 @@
     user-select: none;
     position: relative;
     text-transform: uppercase;
+    will-change: box-shadow, background, color;
+    transition:
+        background var(--theme-transition-duration) var(--theme-transition-easing),
+        border-color var(--theme-transition-duration) var(--theme-transition-easing),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-easing),
+        color var(--theme-transition-duration) var(--theme-transition-easing),
+        transform 0ms linear;
+    animation: piano-key-settle 220ms var(--theme-transition-easing);
 }
 
 .piano-keys .black {
@@ -60,45 +28,48 @@
     height: 140px;
     margin: 0 -22px 0 -22px;
     border-radius: 0 0 5px 5px;
-    background: linear-gradient(#333, #000);
+    border: 1px solid #1f2328;
+    background: linear-gradient(#3b4551, #202730);
 }
 
 .piano-keys .black:active {
-    box-shadow: inset -5px -10px 10px rgba(255, 255, 255, 0.1);
-    background: linear-gradient(to bottom, #000, #434343);
+    box-shadow: inset -4px -8px 10px rgba(255, 255, 255, 0.08);
+    background: linear-gradient(to bottom, #1f2328, #3e4a58);
 }
 
 .piano-keys .key.black[data-active=true]:active {
-    background: linear-gradient(to bottom, var(--piano-color-active) 0%, #eee 100%);
+    background: linear-gradient(to bottom, var(--piano-color-active) 0%, #f6e3ce 100%);
 }
 
 .piano-keys .white {
     height: 230px;
     width: 70px;
     border-radius: 8px;
-    border: 1px solid #000;
-    /* background: linear-gradient(#fff 96%, #eee 4%); */
-    background: linear-gradient(var(--color-white-1) 96%, #eee 4%);
-    color: #000;
+    border: 1px solid var(--surface-3);
+    background: linear-gradient(#fffefb 96%, #ebdfc8 4%);
+    color: var(--piano-white-key-label);
 }
 
 .piano-keys .white:active {
     box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    background: linear-gradient(to bottom, #fff 0%, #f1e3ca 100%);
 }
 
 .piano-keys .key.white[data-active=true]:active {
-    background: linear-gradient(to bottom, var(--piano-color-active) 0%, #eee 100%);
+    background: linear-gradient(to bottom, var(--piano-color-active) 0%, #f1e3ca 100%);
 }
 
 .piano-keys .key span {
     position: absolute;
-    bottom: 20px;
+    bottom: 14px;
     width: 100%;
-    /* color: #A2A2A2; */
-    /* font-size: 1.13rem; */
     font-size: var(--piano-key-font-size);
     text-align: center;
+    font-weight: 700;
+    transition:
+        color var(--theme-transition-duration) var(--theme-transition-easing),
+        transform 0ms linear,
+        opacity 180ms var(--theme-transition-easing);
 }
 
 .piano-keys .key.hide span {
@@ -106,48 +77,58 @@
 }
 
 .piano-keys .white span {
-    color: var(--color-dark-1);
+    color: var(--piano-white-key-label);
 }
 
 .piano-keys .black span {
-    bottom: 13px;
-    color: var(--piano-color-primary);
+    bottom: 10px;
+    color: var(--piano-black-key-label);
 }
 
 .piano-keys .key[data-active=true] {
     background: var(--piano-color-active);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    box-shadow: 0 8px 16px rgba(207, 95, 60, 0.25);
     color: var(--piano-color-secondary);
 }
 
-.piano-keys .key[data-active=true] span {
+.piano-keys .key.white[data-active=true] span {
+    color: var(--piano-active-key-label);
+}
+
+.piano-keys .key.black[data-active=true] span {
     color: var(--piano-color-secondary);
 }
 
 .piano-keys .key[data-iskey="true"] {
     background: var(--piano-color-isKey);
-    text-decoration: underline;
+    box-shadow: 0 10px 20px rgba(207, 95, 60, 0.35);
+}
+
+.piano-keys .key.white[data-iskey="true"] span {
+    color: var(--piano-active-key-label);
+}
+
+.piano-keys .key.black[data-iskey="true"] span {
+    color: var(--piano-color-secondary);
+}
+
+.piano-keys .key[data-iskey="true"][data-active=true] {
+    box-shadow: 0 12px 22px rgba(207, 95, 60, 0.28);
+}
+
+@keyframes piano-key-settle {
+    from {
+        opacity: 0.94;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 815px) {
-    .wrapper {
-        padding: 25px;
-    }
-
-    header {
-        flex-direction: column;
-    }
-
-    header :where(h2, .column) {
-        margin-bottom: 13px;
-    }
-
-    .volume-slider input {
-        max-width: 100px;
-    }
-
     .piano-keys {
-        margin-top: 20px;
+        margin-top: 0.5rem;
     }
 
     .piano-keys .key:where(:nth-child(9), :nth-child(10)) {
@@ -167,34 +148,12 @@
 }
 
 @media screen and (max-width: 767px) {
-
-    /* .piano-keys .key:nth-child(13),
-    .piano-keys .key:nth-child(14),
-    .piano-keys .key:nth-child(15),
-    .piano-keys .key:nth-child(16),
-    .piano-keys .key :nth-child(17) {
-        display: none;
-    } */
-
     .piano-keys .white {
         width: 50px;
     }
-
-    /* .piano-keys .black {
-        width: 50px;
-    } */
 }
 
 @media screen and (max-width: 375px) {
-
-    /* .piano-keys .key:nth-child(13),
-    .piano-keys .key:nth-child(14),
-    .piano-keys .key:nth-child(15),
-    .piano-keys .key:nth-child(16),
-    .piano-keys .key :nth-child(17) {
-        display: none;
-    } */
-
     .piano-keys .white {
         width: 40px;
     }

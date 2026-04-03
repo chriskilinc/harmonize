@@ -1,60 +1,151 @@
-:root {
-    --color-white-1: #fbf3fb;
-    --color-white-2: #f5f5f5;
-    --color-white-3: #e0e0e0;
-    --color-dark-1: #030103;
-    --color-dark-2: #1a1a1a;
-    --color-dark-3: #2b2b2b;
-    --color-dark-4: #3c3c3c;
-    --color-purple-1: #522258;
-    --color-red-1: #8C3061;
-    --color-red-2: #C63C51;
-    --color-red-3: #D95F59;
-    --color-red-4: #e79b97;
-    --color-green-4: #97e79b;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-    --piano-color-primary: #f5f5f5;
-    --piano-color-secondary: #373737;
-    /* --piano-color-active: #e7c8c8; */
-    --piano-color-active: var(--color-red-4);
-    /* --piano-color-isKey: #c47575; */
-    --piano-color-isKey: var(--color-red-3);
+:root {
+    --color-white-1: #f7f4ee;
+    --color-white-2: #e2ddd2;
+    --color-white-3: #b8b0a2;
+    --color-dark-1: #0d1117;
+    --color-dark-2: #151b23;
+    --color-dark-3: #263041;
+    --color-dark-4: #3e4b60;
+    --color-purple-1: #42a7b5;
+    --color-red-1: #8a3f2f;
+    --color-red-2: #c15f42;
+    --color-red-3: #e28454;
+    --color-red-4: #f0b28d;
+    --color-green-4: #54c689;
+
+    --surface-1: #151b23;
+    --surface-2: #1c2330;
+    --surface-3: #2d3747;
+    --ink-1: #f7f4ee;
+    --ink-2: #d0c9bc;
+
+    --piano-color-primary: #e6dfd2;
+    --piano-color-secondary: #1e232b;
+    --piano-color-active: #f0b28d;
+    --piano-color-isKey: #e28454;
+    --piano-white-key-label: #1e232b;
+    --piano-black-key-label: #f2ebe0;
+    --piano-active-key-label: #1e232b;
+
+    --app-bg:
+        radial-gradient(circle at 10% 6%, rgba(66, 167, 181, 0.18), transparent 32%),
+        radial-gradient(circle at 92% 8%, rgba(226, 132, 84, 0.2), transparent 28%),
+        linear-gradient(155deg, #0b0f14 0%, #131922 52%, #161d28 100%);
+
+    --radius-sm: 0.5rem;
+    --radius-md: 0.85rem;
+    --radius-lg: 1.1rem;
+    --box-shadow: 0 8px 24px rgba(31, 35, 40, 0.12);
+    --space-1: 0.35rem;
+    --space-2: 0.6rem;
+    --space-3: 0.9rem;
+    --space-4: 1.25rem;
+    --space-5: 1.75rem;
+    --space-6: 2.5rem;
+
+    --accent-soft: color-mix(in srgb, var(--color-red-3) 58%, var(--surface-3));
+    --focus-ring-soft: color-mix(in srgb, var(--ink-2) 62%, transparent);
+    --theme-transition-duration: 260ms;
+    --theme-transition-easing: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+    --font-heading: 'Space Grotesk', 'Avenir Next', sans-serif;
+    --font-mono: 'Fira Mono', 'Courier New', monospace;
+}
+
+[data-theme="light"] {
+    --color-white-1: #fffaf0;
+    --color-white-2: #f7efd9;
+    --color-white-3: #d8cfbb;
+    --color-dark-1: #1f2328;
+    --color-dark-2: #28303a;
+    --color-dark-3: #4a5664;
+    --color-dark-4: #647183;
+    --color-purple-1: #007a8a;
+    --color-red-1: #8f4a34;
+    --color-red-2: #cf5f3c;
+    --color-red-3: #e57f4a;
+    --color-red-4: #f2b589;
+    --color-green-4: #2f915a;
+
+    --surface-1: #fffaf0;
+    --surface-2: #f4ecda;
+    --surface-3: #e9dfc7;
+    --ink-1: #1f2328;
+    --ink-2: #3c4653;
+
+    --piano-color-primary: #f6f2e9;
+    --piano-color-secondary: #2b3139;
+    --piano-color-active: #f2b589;
+    --piano-color-isKey: #e57f4a;
+    --piano-white-key-label: #1f2328;
+    --piano-black-key-label: #f2ebe0;
+    --piano-active-key-label: #1f2328;
+
+    --app-bg:
+        radial-gradient(circle at 8% 4%, rgba(0, 122, 138, 0.16), transparent 28%),
+        radial-gradient(circle at 92% 12%, rgba(229, 127, 74, 0.20), transparent 25%),
+        linear-gradient(160deg, #fffdf8 0%, #f8f0e2 56%, #f7f5ee 100%);
 }
 
 html,
 body,
 #root {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
 }
 
 body {
-    background: var(--color-dark-1);
-    color: var(--color-white-1);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    display: flex;
+    color: var(--ink-1);
+    font-family: var(--font-body);
+    background: var(--app-bg);
+    transition:
+        color var(--theme-transition-duration) var(--theme-transition-easing),
+        background var(--theme-transition-duration) var(--theme-transition-easing);
+}
+
+body.theme-fade {
+    animation: theme-fade-in var(--theme-transition-duration) var(--theme-transition-easing);
+}
+
+@keyframes theme-fade-in {
+    from {
+        opacity: 0.88;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --theme-transition-duration: 0ms;
+    }
+
+    body.theme-fade {
+        animation: none;
+    }
 }
 
 main {
+    width: 100%;
+    max-width: 96rem;
+    margin: 0 auto;
     padding: 2rem;
-    justify-content: center;
-    max-width: -webkit-fill-available;
-    height: 100%;
 
     @media screen and (max-width: 768px) {
-        padding: 1rem;
+        padding: 1.1rem;
     }
 }
 
 .container {
-    /* max-width: 40rem; */
-    height: 100%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 h1,
@@ -63,12 +154,22 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
+    color: var(--ink-1);
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: var(--font-body);
 }
 
 p {
     margin: 0;
+    color: var(--ink-2);
 }
 
 .p-16 {
@@ -103,24 +204,24 @@ p {
 
 
 .gap-4 {
-    gap: 0.25rem;
+    gap: var(--space-1);
 }
 
 .gap-8 {
-    gap: 0.5rem;
+    gap: var(--space-2);
 }
 
 .gap-16 {
-    gap: 1rem;
+    gap: var(--space-3);
 }
 
 .gap-32 {
-    gap: 2rem;
+    gap: var(--space-5);
 }
 
 .width-m-40 {
-    width: 40rem;
-    max-width: 40rem;
+    width: 46rem;
+    max-width: 46rem;
 }
 
 @media (min-width: 768px) {
@@ -151,10 +252,10 @@ p {
     }
 
     .md-gap-16 {
-        gap: 1rem;
+        gap: 1.2rem;
     }
 
     .md-gap-32 {
-        gap: 2rem;
+        gap: 2.25rem;
     }
 }

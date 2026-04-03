@@ -1,50 +1,53 @@
-:root {
-    --arrow-bg: rgba(255, 255, 255, 0.3);
-    --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
-    --option-bg: var(--color-dark-1);
-    --select-bg: rgba(255, 255, 255, 0.2);
-    --colorDark: #4c0000;
-    --colorDark: var(--color-red-1);
-}
-
-select {
+.dropdown-select {
     appearance: none;
-    border: 0;
+    border: 1px solid var(--surface-3);
     outline: 0;
     font: inherit;
+    font-weight: 600;
     text-transform: capitalize;
-    padding: 0.5rem 2rem 0.5rem 0.5rem;
-    background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
-        /* linear-gradient(to bottom, #242424 96%, #eee 20%); */
-        linear-gradient(#000 90%, var(--colorDark) 10%);
-    /* linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em); */
-    color: white;
-    color: #f4f4f4;
+    padding: 0.65rem 2.2rem 0.65rem 0.8rem;
+    background:
+        linear-gradient(45deg, transparent 50%, var(--ink-2) 50%),
+        linear-gradient(135deg, var(--ink-2) 50%, transparent 50%),
+        linear-gradient(to right, transparent, transparent);
+    background-position:
+        calc(100% - 16px) calc(50% - 3px),
+        calc(100% - 10px) calc(50% - 3px),
+        100% 0;
+    background-size: 6px 6px, 6px 6px, 2.5em 100%;
+    background-repeat: no-repeat;
+    color: var(--ink-1);
     cursor: pointer;
-    border-radius: 0.5em;
-    /* box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2); */
-    /* box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.5); */
-    border: 2px solid var(--colorDark);
+    border-radius: 0.75rem;
+    background-color: var(--surface-1);
+    transition:
+        border-color var(--theme-transition-duration) var(--theme-transition-easing),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-easing),
+        background-color var(--theme-transition-duration) var(--theme-transition-easing),
+        color var(--theme-transition-duration) var(--theme-transition-easing);
 
     &::-ms-expand {
         display: none;
     }
 
     &:focus {
-        outline: none;
+        outline: 2px solid var(--focus-ring-soft);
+        outline-offset: 2px;
+    }
+
+    &:hover {
+        border-color: var(--accent-soft);
     }
 }
 
-select option {
-    color: inherit;
-    background-color: var(--option-bg);
+.dropdown-select option {
+    color: var(--ink-1);
+    background-color: var(--surface-1);
 }
 
 /* Tablet and up */
 @media (min-width: 768px) {
-    select {
-        /* font-size: 1.25rem; */
-        padding: 1rem 4rem 1rem 1rem;
-
+    .dropdown-select {
+        padding: 0.75rem 2.4rem 0.75rem 0.9rem;
     }
 }

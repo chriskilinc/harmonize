@@ -1,8 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { ReactNode } from "react";
 
 interface IFeatureContext {
   synth: boolean;
+  chords: boolean;
+  test: boolean;
 }
 
 interface FeatureProviderProps {
@@ -12,14 +14,16 @@ interface FeatureProviderProps {
 const FeatureContext = createContext<IFeatureContext>({} as any);
 
 export const FeatureProvider = ({ children }: FeatureProviderProps) => {
-  const [synth, setSynth] = useState(false);
-
-  console.log("synth", synth);
+  const synth = false;
+  const chords = false;
+  const test = false;
 
   return (
     <FeatureContext.Provider
       value={{
         synth,
+        chords,
+        test,
       }}
     >
       {children}

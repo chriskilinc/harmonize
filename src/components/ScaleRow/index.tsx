@@ -6,13 +6,15 @@ interface ScaleRowProps {
 }
 
 export const ScaleRow: React.FC<ScaleRowProps> = ({ scale }) => {
+  const noteCount = scale?.notes?.length ?? 0;
+  const densityClass = noteCount > 9 ? "compact" : noteCount > 7 ? "dense" : "";
 
   return (
-    <div className="scale-row">
+    <div className={`scale-row ${densityClass}`.trim()}>
       {scale?.notes?.map((note, i) => {
         const interval = scale.intervals[i];
         return (
-          <div key={i} className="scale-interval" date-interval={interval}>
+          <div key={i} className="scale-interval" data-interval={interval}>
             <p className="scale-note">{Note.simplify(note)}</p>
             <p className="scale-numeral">
               {RomanNumeral.get(Interval.get(interval)).name}
