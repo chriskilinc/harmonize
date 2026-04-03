@@ -3,7 +3,7 @@
   color: var(--ink-1);
   cursor: pointer;
   font: inherit;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 1.25rem;
   text-align: center;
   background: var(--surface-1);
   border-radius: 999px;
@@ -60,4 +60,11 @@
 .note-button:focus-visible {
   outline: 2px solid var(--focus-ring-soft);
   outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .note-button {
+    padding: 0.65rem 1.35rem;
+    font-size: 1rem;
+  }
 }

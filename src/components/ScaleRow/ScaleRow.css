@@ -108,6 +108,10 @@
         gap: 0.72rem;
     }
 
+    .scale-row .scale-interval {
+        max-width: 3.3rem;
+    }
+
     .scale-row .scale-note {
         max-width: 3.3rem;
         font-size: 1.15rem;
@@ -122,6 +126,10 @@
         font-size: 1.05rem;
     }
 
+    .scale-row.dense .scale-interval {
+        max-width: 3rem;
+    }
+
     .scale-row.dense .scale-numeral {
         font-size: 0.78rem;
     }
@@ -129,6 +137,10 @@
     .scale-row.compact .scale-note {
         max-width: 2.8rem;
         font-size: 0.98rem;
+    }
+
+    .scale-row.compact .scale-interval {
+        max-width: 2.8rem;
     }
 
     .scale-row.compact .scale-numeral {
@@ -142,30 +154,44 @@
         gap: 0.9rem;
     }
 
+    .scale-row .scale-interval {
+        max-width: 3.95rem;
+    }
+
     .scale-row .scale-note {
-        max-width: 3.8rem;
-        font-size: 1.3rem;
+        max-width: 3.95rem;
+        font-size: 1.34rem;
+        min-height: 2.15rem;
     }
 
     .scale-row .scale-numeral {
-        font-size: 0.9rem;
+        font-size: 0.92rem;
+        min-height: 1.15rem;
     }
 
     .scale-row.dense .scale-note {
-        max-width: 3.35rem;
-        font-size: 1.16rem;
+        max-width: 3.45rem;
+        font-size: 1.18rem;
+    }
+
+    .scale-row.dense .scale-interval {
+        max-width: 3.45rem;
     }
 
     .scale-row.dense .scale-numeral {
-        font-size: 0.84rem;
+        font-size: 0.86rem;
     }
 
     .scale-row.compact .scale-note {
-        max-width: 3rem;
-        font-size: 1.06rem;
+        max-width: 3.1rem;
+        font-size: 1.08rem;
+    }
+
+    .scale-row.compact .scale-interval {
+        max-width: 3.1rem;
     }
 
     .scale-row.compact .scale-numeral {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
     }
 }
