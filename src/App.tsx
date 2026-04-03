@@ -16,14 +16,6 @@ import { Scales } from "./pages/Scales";
 function DataLayout() {
   return (
     <DataProvider>
-      <Outlet />
-    </DataProvider>
-  );
-}
-
-function DataSynthLayout() {
-  return (
-    <DataProvider>
       <SynthProvider>
         <Outlet />
       </SynthProvider>
@@ -34,14 +26,10 @@ function DataSynthLayout() {
 function App() {
   const router = createBrowserRouter([
     {
-      element: <DataSynthLayout />,
-      errorElement: <ErrorPage />,
-      children: [{ index: true, element: <InitialSection /> }],
-    },
-    {
       element: <DataLayout />,
       errorElement: <ErrorPage />,
       children: [
+        { index: true, element: <InitialSection /> },
         { path: "/test", element: <Test /> },
         { path: "/chords", element: <Chords /> },
         { path: "/scales", element: <Scales /> },

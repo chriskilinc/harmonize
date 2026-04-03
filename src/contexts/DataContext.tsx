@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { ReactNode } from "react";
 import { useSearchParams } from "react-router-dom";
 import { chromaticScale } from "../utils/util";
@@ -13,7 +13,7 @@ interface IDataContext {
   mode: string;
   key: string;
   octave: number;
-  setNote: (note: any) => void;
+  setNote: (note: PitchNote | string) => void;
   setOctave: (octave: number) => void;
   setMode: (mode: string) => void;
   setSearchParams: (
@@ -28,56 +28,62 @@ interface DataProviderProps {
   children: ReactNode;
 }
 
-const DataContext = createContext<IDataContext>({} as any);
+const DataContext = createContext<IDataContext | undefined>(undefined);
 
 export const DataProvider = ({ children }: DataProviderProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const keyParam = searchParams.get("key")?.toUpperCase() || "C";
-  const keyParamValid = chromaticScale.includes(keyParam) ? keyParam : "C";
+  const key = useMemo(() => {
+    const keyParam = searchParams.get("key")?.toUpperCase() || "C";
+    return chromaticScale.includes(keyParam) ? keyParam : "C";
+  }, [searchParams]);
 
-  const modeParam = searchParams.get("mode") || "major";
-  const modeParamValid = Scale.names().includes(modeParam)
-    ? modeParam
-    : "major";
+  const mode = useMemo(() => {
+    const modeParam = searchParams.get("mode") || "major";
+    return Scale.names().includes(modeParam) ? modeParam : "major";
+  }, [searchParams]);
 
   const [octave, setOctave] = useState(4);
-  const [note, setNote] = useState(Note.get(`${keyParamValid}${octave}`)); // root note
-  const [mode, setMode] = useState(modeParamValid);
-  const [scale, setScale] = useState(
-    Scale.get(`${note.name} ${Scale.get(mode).name}`)
-  );
 
-  useEffect(() => {
-    setNote(Note.get(`${keyParamValid}${octave}`));
-  }, [octave, keyParamValid]);
+  const note = useMemo(() => Note.get(`${key}${octave}`), [key, octave]);
 
-  useEffect(() => {
-    setScale(Scale.get(`${note.name} ${Scale.get(mode).name}`));
-  }, [note, mode, octave]);
+  const scale = useMemo(() => {
+    return Scale.get(`${note.name} ${Scale.get(mode).name}`);
+  }, [note.name, mode]);
 
-  // const scale = Scale.get(`${note.name} ${Scale.get(mode).name}`);
-  const scaleNotes = scale.notes
-    .map(Note.get)
-    .map((note) => Note.simplify(note.pc));
+  const scaleNotes = useMemo(() => {
+    return scale.notes.map(Note.get).map((scaleNote) => Note.simplify(scaleNote.pc));
+  }, [scale.notes]);
 
   const getNoteObject = (note: string) => {
     return Note.get(`${note}${octave}`);
   };
 
   const changeKey = (key: string) => {
-    setNote(Note.get(`${key}${octave}`));
+    const normalizedKey = key.toUpperCase();
     setSearchParams((params) => {
-      params.set("key", key);
-      return params;
+      const nextParams = new URLSearchParams(params);
+      nextParams.set("key", normalizedKey);
+      return nextParams;
     });
   };
 
   const changeMode = (mode: string) => {
-    setMode(mode);
     setSearchParams((params) => {
-      params.set("mode", mode);
-      return params;
+      const nextParams = new URLSearchParams(params);
+      nextParams.set("mode", mode);
+      return nextParams;
     });
+  };
+
+  const setNote = (nextNote: PitchNote | string) => {
+    const parsedNote = typeof nextNote === "string" ? Note.get(nextNote) : nextNote;
+    if (parsedNote.pc) {
+      changeKey(parsedNote.pc);
+    }
+  };
+
+  const setMode = (nextMode: string) => {
+    changeMode(nextMode);
   };
 
   return (
@@ -87,7 +93,7 @@ export const DataProvider = ({ children }: DataProviderProps) => {
         scale,
         scaleNotes,
         mode,
-        key: keyParamValid,
+        key,
         octave,
         setNote,
         setOctave,
@@ -103,4 +109,10 @@ export const DataProvider = ({ children }: DataProviderProps) => {
   );
 };
 
-export const useDataContext = () => useContext(DataContext);
+export const useDataContext = () => {
+  const context = useContext(DataContext);
+  if (!context) {
+    throw new Error("useDataContext must be used within a DataProvider");
+  }
+  return context;
+};

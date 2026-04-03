@@ -1,13 +1,11 @@
 import { Interval, Note, RomanNumeral, Scale } from "tonal";
 import "./ScaleRow.css";
-import { useDataContext } from "../../contexts/DataContext";
 
 interface ScaleRowProps {
   scale: Scale.Scale;
 }
 
-export const ScaleRow: React.FC<ScaleRowProps> = ({}) => {
-  const { scale } = useDataContext();
+export const ScaleRow: React.FC<ScaleRowProps> = ({ scale }) => {
 
   return (
     <div className="scale-row">
