@@ -1,17 +1,23 @@
 /* Mobile-first styles */
+.scale-row-shell {
+    width: 100%;
+    overflow: hidden;
+    padding: 0.45rem 0;
+}
+
 .scale-row {
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 0.52rem;
-    overflow-x: auto;
-    padding: 0.45rem 0.2rem;
+    gap: clamp(0.2rem, 1vw, 0.52rem);
+    margin: 0 auto;
 }
 
 .scale-row .scale-interval {
-    min-width: 3rem;
-    flex: 0 0 auto;
+    min-width: 0;
+    flex: 1 1 0;
+    max-width: 3rem;
 }
 
 .scale-row .scale-note {
@@ -25,7 +31,7 @@
     font-size: 1rem;
     font-weight: bold;
     justify-content: center;
-    width: 3rem;
+    width: 100%;
     min-height: 2rem;
     white-space: nowrap;
     padding: 0 0.25rem;
@@ -64,11 +70,10 @@
 }
 
 .scale-row.dense .scale-interval {
-    min-width: 2.8rem;
+    max-width: 2.8rem;
 }
 
 .scale-row.dense .scale-note {
-    width: 2.8rem;
     font-size: 0.98rem;
 }
 
@@ -81,11 +86,10 @@
 }
 
 .scale-row.compact .scale-interval {
-    min-width: 2.55rem;
+    max-width: 2.55rem;
 }
 
 .scale-row.compact .scale-note {
-    width: 2.55rem;
     min-height: 1.95rem;
     font-size: 0.9rem;
     padding: 0 0.18rem;
@@ -105,7 +109,7 @@
     }
 
     .scale-row .scale-note {
-        width: 3.3rem;
+        max-width: 3.3rem;
         font-size: 1.15rem;
     }
 
@@ -114,7 +118,7 @@
     }
 
     .scale-row.dense .scale-note {
-        width: 3rem;
+        max-width: 3rem;
         font-size: 1.05rem;
     }
 
@@ -123,7 +127,7 @@
     }
 
     .scale-row.compact .scale-note {
-        width: 2.8rem;
+        max-width: 2.8rem;
         font-size: 0.98rem;
     }
 
@@ -139,7 +143,7 @@
     }
 
     .scale-row .scale-note {
-        width: 3.8rem;
+        max-width: 3.8rem;
         font-size: 1.3rem;
     }
 
@@ -148,7 +152,7 @@
     }
 
     .scale-row.dense .scale-note {
-        width: 3.35rem;
+        max-width: 3.35rem;
         font-size: 1.16rem;
     }
 
@@ -157,7 +161,7 @@
     }
 
     .scale-row.compact .scale-note {
-        width: 3rem;
+        max-width: 3rem;
         font-size: 1.06rem;
     }
 

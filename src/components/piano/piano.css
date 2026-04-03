@@ -1,4 +1,14 @@
+.piano-keys-shell {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0 0.2rem;
+}
+
 .piano-keys {
+    --white-key-width: 70px;
+    --white-key-height: 230px;
+    --black-key-width: 44px;
+    --black-key-height: 140px;
     display: flex;
     justify-content: center;
     list-style: none;
@@ -11,6 +21,7 @@
     cursor: pointer;
     user-select: none;
     position: relative;
+    flex: 0 0 auto;
     text-transform: uppercase;
     will-change: box-shadow, background, color;
     transition:
@@ -24,9 +35,9 @@
 
 .piano-keys .black {
     z-index: 2;
-    width: 44px;
-    height: 140px;
-    margin: 0 -22px 0 -22px;
+    width: var(--black-key-width);
+    height: var(--black-key-height);
+    margin: 0 calc(var(--black-key-width) * -0.5) 0 calc(var(--black-key-width) * -0.5);
     border-radius: 0 0 5px 5px;
     border: 1px solid #1f2328;
     background: linear-gradient(#3b4551, #202730);
@@ -42,8 +53,8 @@
 }
 
 .piano-keys .white {
-    height: 230px;
-    width: 70px;
+    height: var(--white-key-height);
+    width: var(--white-key-width);
     border-radius: 8px;
     border: 1px solid var(--surface-3);
     background: linear-gradient(#fffefb 96%, #ebdfc8 4%);
@@ -128,37 +139,29 @@
 
 @media screen and (max-width: 815px) {
     .piano-keys {
+        --white-key-width: clamp(40px, 8.8vw, 60px);
+        --white-key-height: clamp(150px, 24vw, 180px);
+        --black-key-width: clamp(28px, 5.8vw, 40px);
+        --black-key-height: clamp(86px, 13vw, 100px);
         margin-top: 0.5rem;
-    }
-
-    .piano-keys .key:where(:nth-child(9), :nth-child(10)) {
-        display: none;
-    }
-
-    .piano-keys .black {
-        height: 100px;
-        width: 40px;
-        margin: 0 -20px 0 -20px;
-    }
-
-    .piano-keys .white {
-        height: 180px;
-        width: 60px;
+        justify-content: center;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .piano-keys .white {
-        width: 50px;
+    .piano-keys {
+        --white-key-width: clamp(34px, 10.2vw, 56px);
+        --white-key-height: clamp(138px, 30vw, 172px);
+        --black-key-width: clamp(24px, 6.6vw, 38px);
+        --black-key-height: clamp(78px, 17vw, 100px);
     }
 }
 
 @media screen and (max-width: 375px) {
-    .piano-keys .white {
-        width: 40px;
-    }
-
-    .piano-keys .black {
-        width: 40px;
+    .piano-keys {
+        --white-key-width: clamp(30px, 10.8vw, 48px);
+        --white-key-height: clamp(126px, 34vw, 164px);
+        --black-key-width: clamp(22px, 6.8vw, 34px);
+        --black-key-height: clamp(70px, 18vw, 94px);
     }
 }

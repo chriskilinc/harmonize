@@ -99,6 +99,12 @@ body,
     width: 100%;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     color: var(--ink-1);
     font-family: var(--font-body);
@@ -136,7 +142,7 @@ main {
     width: 100%;
     max-width: 96rem;
     margin: 0 auto;
-    padding: 2rem;
+    padding: clamp(0.9rem, 2.5vw, 2rem);
 
     @media screen and (max-width: 768px) {
         padding: 1.1rem;
@@ -220,7 +226,7 @@ p {
 }
 
 .width-m-40 {
-    width: 46rem;
+    width: min(46rem, 100%);
     max-width: 46rem;
 }
 

@@ -91,32 +91,34 @@ export const Piano = ({ selectedNotes, rootNote }: { selectedNotes: string[], ro
   };
 
   return (
-    <ul className="piano-keys">
-      {arrangedNotes.map((n, i, arr) => {
-        const noteObj = getNoteObject(n);
-        const reactKey = `${n}-${i}`;
-        const active =
-          selectedNotes.includes(n) ||
-          selectedNotes.includes(Note.enharmonic(n));
-        const isBlack = n.includes("#") || n.includes("b");
-        const pianoKey = isBlack ? "black" : "white";
-        const isKey = n == selectedNotes[0];
-        const classes = `key ${pianoKey} ${n}`;
-        return (
-          <li
-            key={reactKey}
-            data-note={n}
-            data-active={active.toString()}
-            data-iskey={isKey.toString()}
-            data-midi={noteObj.midi}
-            data-freq={noteObj.freq}
-            className={classes}
-            onClick={onClick}
-          >
-            <span>{n}</span>
-          </li>
-        );
-      })}
-    </ul>
+    <div className="piano-keys-shell">
+      <ul className="piano-keys">
+        {arrangedNotes.map((n, i, arr) => {
+          const noteObj = getNoteObject(n);
+          const reactKey = `${n}-${i}`;
+          const active =
+            selectedNotes.includes(n) ||
+            selectedNotes.includes(Note.enharmonic(n));
+          const isBlack = n.includes("#") || n.includes("b");
+          const pianoKey = isBlack ? "black" : "white";
+          const isKey = n == selectedNotes[0];
+          const classes = `key ${pianoKey} ${n}`;
+          return (
+            <li
+              key={reactKey}
+              data-note={n}
+              data-active={active.toString()}
+              data-iskey={isKey.toString()}
+              data-midi={noteObj.midi}
+              data-freq={noteObj.freq}
+              className={classes}
+              onClick={onClick}
+            >
+              <span>{n}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
