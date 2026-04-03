@@ -38,8 +38,8 @@ export const DataProvider = ({ children }: DataProviderProps) => {
   }, [searchParams]);
 
   const mode = useMemo(() => {
-    const modeParam = searchParams.get("mode") || "major";
-    return Scale.names().includes(modeParam) ? modeParam : "major";
+    const modeParam = searchParams.get("mode")?.trim() || "major";
+    return Scale.get(modeParam).empty ? "major" : modeParam;
   }, [searchParams]);
 
   const [octave, setOctave] = useState(4);
@@ -47,7 +47,7 @@ export const DataProvider = ({ children }: DataProviderProps) => {
   const note = useMemo(() => Note.get(`${key}${octave}`), [key, octave]);
 
   const scale = useMemo(() => {
-    return Scale.get(`${note.name} ${Scale.get(mode).name}`);
+    return Scale.get(`${note.name} ${mode}`);
   }, [note.name, mode]);
 
   const scaleNotes = useMemo(() => {
